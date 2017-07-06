@@ -68,6 +68,7 @@ class AppComponent extends React.Component {
     var constant=this.constant,
         postions=this.state.positions,
         imageCenterItem=postions[centertIndex];
+        
         imageCenterItem.pos=constant.centerPos;
 
 
