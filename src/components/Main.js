@@ -3,6 +3,7 @@ require('styles/main.less');
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ImagesFigure from './ImagesFigure';
+import NavsFigure from './NavsFigure';
 
 //获取图片相关信息数据
 var imagesDatasArr=require('../sources/imagesData.json');
@@ -17,6 +18,7 @@ imagesDatasArr=(function addsImagesUrl(arr){
   return arr;
 })(imagesDatasArr)
 
+//默认位置参数
  var constant = {
             centerPos: {
               left: 0,
@@ -31,9 +33,11 @@ imagesDatasArr=(function addsImagesUrl(arr){
               y: 0
             }
           }
+//获取特定范围随机位置
 function getRangePostion(max,min){
   return Math.ceil(Math.random()*(max-min)+min);
 }
+//获取随机旋转角度
 function get36range(){
   return ((Math.random() > 0.5 ? '' : '-') + Math.ceil(Math.random() * 30));
 }
@@ -74,8 +78,8 @@ class AppComponent extends React.Component {
         this.rangePostion(0);
 
   }
+  //获取随机位置
   rangePostion=(centertIndex)=>{
-    //var constant=this.constant,
       var positions=this.state.positions,
           imageCenterItem=positions.splice(centertIndex,1),
           imageTopArr=[],
@@ -126,6 +130,7 @@ class AppComponent extends React.Component {
             positions:positions
           })
   }
+  //点击图片翻转
   inverse=(index)=>{
     return function(){
       var positions=this.state.positions;
@@ -135,6 +140,7 @@ class AppComponent extends React.Component {
       })
     }.bind(this)
   }
+  //点击图片居中
   center=(index)=>{
     return function(){
       this.rangePostion(index);
@@ -142,7 +148,7 @@ class AppComponent extends React.Component {
   }
   render() {
     var imagesArr=[];
-    
+    var navsArr=[];
     for(var i=0;i<imagesDatasArr.length;i++){
       var item=imagesDatasArr[i];
       if(!this.state.positions[i]){
@@ -158,13 +164,16 @@ class AppComponent extends React.Component {
       }
 
       imagesArr.push(<ImagesFigure arrange={this.state.positions[i]} datas={item} key={'figures'+i}  ref={'figures'+i} inverse={this.inverse(i)} center={this.center(i)} />);
+      navsArr.push(<NavsFigure arrange={this.state.positions[i]} key={'navs'+i} ref={'navs'+i} inverse={this.inverse(i)} center={this.center(i)} />);
     }
     return (
       <div className="stage" ref="stage">
           <section className="img-sec">
             {imagesArr}
           </section>
-          <nav className="controller-nav"></nav>
+          <nav className="controller-nav">
+            {navsArr}
+          </nav>
       </div>
     );
   }
