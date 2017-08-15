@@ -27,6 +27,8 @@ build/Release
 node_modules
 dist
 publish
+server/views
+server/public
 
 # Bower
 bower_components/
