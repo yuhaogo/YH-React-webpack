@@ -1,0 +1,28 @@
+{
+    "name"        : "mypicture",  // 应用名称
+    "script"      : "./server/bin/www",  // 实际启动脚本
+    "cwd"         : "./"  // 当前工作路径
+    // "watch": ["views", "routes"],
+    // "ignore_watch" : ["node_modules", "public"],
+    // "watch_options": {
+    //   "followSymlinks": false
+    // },
+    // "error_file" : "../logs/app-err.log",  // 错误日志路径
+    // "out_file"   : "../logs/app-out.log",  // 普通日志路径
+    // "env": {
+    //   "NODE_ENV": "production",  // 环境参数，当前指定为生产环境
+    //   "CSP_SERVICE":"csp-service",
+    //   "EUREKA_HOST":"192.168.1.153",
+    //   "EUREKA_PORT":"1111",
+    //   "HTTPS_PORT":"443",
+    //   "PORT":"8070"
+    // },
+    // "env_test": {
+    //   "NODE_ENV":"development",
+    //   "CSP_SERVICE":"csp-service",
+    //   "EUREKA_HOST":"192.168.1.153",
+    //   "EUREKA_PORT":"1111",
+    //   "HTTPS_PORT":"8443",
+    //   "PORT": "8071"
+    // }
+  }
